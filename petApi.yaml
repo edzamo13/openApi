@@ -14,7 +14,7 @@ tags:
   - name: pets
     description: Everething about your pets
     externalDocs:
-      description:
+      description: "url"
       url: http://google.com
 paths:
   /pet/{petId}:

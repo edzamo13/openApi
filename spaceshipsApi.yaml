@@ -1,11 +1,15 @@
 openapi: "3.0.2"
 info:
   title: Spaceships
-  description: It is and inventory of spaceships
+  description: This is a spaceship inventory where whole their information is available to manage. 
+  termsOfService: http://mysite.com/terms
   contact:
     name: Edwin
     email: edzamo13@gmail.com
   version: 1.0.0
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/
 servers:
   - url: https://dev.spaceships.com/v1
     description: It is a development server
@@ -15,10 +19,10 @@ tags:
   - name: spaceships
     description: Vehicle to travel through space
     externalDocs:
-      description: Find more
+      description: Find out more
       url: http://info.spaceshis.com
 paths:
-  /spaceships:
+ /spaceships:
     get:
       tags:
         - spaceships
