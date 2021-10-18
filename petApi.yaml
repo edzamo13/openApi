@@ -1,0 +1,104 @@
+openapi: "3.0.2"
+info:
+  title: pet
+  description: It is a example of a Api
+  contact:
+    name: Edwin
+    email: edzamo13@gmail.com
+  version: "1.0.0"
+servers:
+  - url: https://api.server.test/v1
+    description: url example Pet
+
+tags:
+  - name: pets
+    description: Everething about your pets
+    externalDocs:
+      description:
+      url: http://google.com
+paths:
+  /pet/{petId}:
+    get:
+      tags:
+        - pet
+      summary: Find pet by ID
+      description: Returns a single pet
+      operationId: getPetById
+      parameters:
+        - name: petID
+          in: path
+          description: Id of pet to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Cat'
+                  - $ref: '#/components/schemas/Dog'
+              example:
+                Dog:
+                  value:
+                    petyType: Dog
+                    name: Snawball
+                Cat:
+                  value:
+                    peyType: Cat
+                    bark: Bruff
+components:
+  schemas:
+    Pet:
+      type: object
+      required:
+        - peyType
+        - id
+      properties:
+        id:
+          type: string
+        petType:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        healthStatus:
+          $ref: '#/components/schemas/HealthStatus'
+      discriminator:
+        propertyName: petType
+        mapping:
+          DOG: '#/components/schemas/Dog'
+          CAT: '#/components/schemas/Cat'
+    Cat:
+      allOf:
+        - $ref: '#/components/schemas/Pet'
+        - type: object
+          #all Other properties specific to a `Cat`
+          properties:
+            name:
+              type: string
+              example: Tito
+    Dog:
+      allOf:
+        - $ref: '#/components/schemas/Pet'
+        - type: object
+          #all Other properties specific to a `Cat`
+          properties:
+            name:
+              type: string
+              example: Bruff
+    HealthStatus:
+      type: string
+      enum:
+        - SICK
+        - HEALTHY
+      description: >
+        Health Status:
+        * `SICK` - The pet is sick without medical
+        * `Healt` - The health is confirmed.
+
+
+
