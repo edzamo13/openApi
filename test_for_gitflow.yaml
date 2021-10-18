@@ -1,0 +1,66 @@
+openapi: "3.0.2"
+info:
+  title: Spaceships
+  description: It is and inventory of spaceships
+  contact:
+    name: Edwin
+    email: edzamo13@gmail.com
+  version: 1.0.0
+servers:
+  - url: https://dev.spaceships.com/v1
+    description: It is a development server
+  - url: https://test.spaceships.com/v1
+    description: It is a testing server
+tags:
+  - name: spaceships
+    description: Vehicle to travel through space
+    externalDocs:
+      description: Find more
+      url: http://info.spaceshis.com
+paths:
+  /spaceships:
+    get:
+      tags:
+        - spaceships
+      summary: Provider a list of all spaceships
+      responses:
+        200:
+          description: OK
+    post:
+      tags:
+        - spaceships
+      summary: Register a new spaceships to make it available to manage
+      responses:
+        200:
+          description: OK
+    head:
+      tags:
+        - spaceships
+      summary: Allows checking by certain criteria if any spaceship accomplishes with the search parameters
+      responses:
+        200:
+          description: OK
+  /spaceships/{spaceships-id}:
+    get:
+      tags:
+        - spaceships
+      sumary: Obtain deatiled information about an specific spaceship
+    put:
+      tags:
+        - spaceships
+        summary: Remplace wholw spaceships's imformation, without changing the indentier
+    patch:
+      tags:
+        - spaceships
+        summary: Update partially one or more proporties of the spaceship
+    delete:
+      tags:
+        - spaceships
+        summary: Disable a specific spaceship to make it un availanle of any funcionality
+
+
+
+
+
+
+
